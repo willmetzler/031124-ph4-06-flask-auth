@@ -20,7 +20,7 @@ pipenv install
 To start the client, create a separate terminal and run:
 ```bash
 npm install --prefix client
-npm start --prefix client
+npm run dev --prefix client
 ```
 
 To start the server in another terminal:
