@@ -37,6 +37,8 @@ python app.py
 
 [Flask Session](https://flask-session.readthedocs.io/en/latest/)
 
-[React Proxying API Requests](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
+[Vite + React Proxying API Requests](https://vitejs.dev/config/server-options#server-proxy)
+
+[Create React App Proxying API Requests](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
 
 [Python Generating Secrets](https://docs.python.org/3/library/secrets.html)
