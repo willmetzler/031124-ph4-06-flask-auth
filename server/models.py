@@ -1,3 +1,10 @@
+### we'll use these later... ###
+# from flask_bcrypt import Bcrypt
+# bcrypt = Bcrypt(app)
+# bcrypt.generate_password_hash(password).decode('utf-8')
+# bcrypt.check_password_hash(hashed_password, password)
+#################################
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
@@ -9,36 +16,30 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata=metadata)
 
-# --- USER --- #
+# --- USERS --- #
 
 class User(db.Model, SerializerMixin):
-    # TABLE #
-    __tablename__ = 'users'
 
-    # COLUMNS #
+    __tablename__ = 'users_table'
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
 
-    # RELATIONSHIP #
     notes = db.relationship('Note', back_populates='user')
 
-    # SERIALIZER #
     serialize_rules = ("-notes",)
 
 
 # --- NOTES --- #
 
 class Note(db.Model, SerializerMixin):
-    # TABLE #
-    __tablename__ = 'notes'
 
-    # COLUMNS #
+    __tablename__ = 'notes_table'
+
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
 
-    # RELATIONSHIP #
     user = db.relationship('User', back_populates='notes')
 
-    # SERIALIZER #
-    serialize_rules = ("-user",)
+    serialize_rules = ("-user.notes",)
