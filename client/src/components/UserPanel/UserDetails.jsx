@@ -1,9 +1,9 @@
-function UserDetails({currentUser, logout}) {
+function UserDetails({currentUser}) {
 
     return (
       <div className='user-details'>
         <h2>Welcome {currentUser.username}!</h2>
-        <button onClick={logout}>Logout</button>
+        <button>Logout</button>
       </div>
     )
   
